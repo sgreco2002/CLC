@@ -1,5 +1,5 @@
 #Global Variable for CenturyLink - Terraform Integration
-#new comment
+#new comment ciao
 # comment dario
 provider "clc" {
 	username = "sergio.greco.pp"					// *** clc account
