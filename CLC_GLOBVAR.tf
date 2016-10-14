@@ -1,6 +1,6 @@
 #Global Variable for CenturyLink - Terraform Integration
 #new comment ciao
-# comment dario
+# comment dario 2
 provider "clc" {
 	username = "sergio.greco.pp"					// *** clc account
 	password = "Raffaello00"						// *** clc password
