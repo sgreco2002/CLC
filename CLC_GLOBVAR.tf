@@ -13,6 +13,7 @@ variable "VNETID" {  // *** to be retreived from clc gui
 		FE.VLANID = "77facca935e047b9985d1ae867829194"
 		BE.VLANID = ""
 		DATA.VLANID = ""
+		//add vlan id
 	}
 }
 
@@ -76,6 +77,7 @@ variable "VGLOBRESOURCE" {
 		Drm.RAM = 4096
 		Monitor.CPU = 2
 		Monitor.RAM = 4096
+		// add other machine resources
 	}
 }
 # -----------------------------------------------------------------------------------
@@ -88,6 +90,7 @@ variable "VHOSTNAME" {
 		FE.CACHE = "PCACHE"
 		FE.DRM = "PDRMLI"
 		FE.MON = "PMONIT"
+		// add other machine names
 	}
 }
 
@@ -98,6 +101,7 @@ variable "VTEMPLATES" {
 	description = "Temaplte names to be used"
 	default {
 		RH.BLANKOS.Template = "RHEL-6-64-TEMPLATE"
+		// add windows blank template
 	}
 }
 
