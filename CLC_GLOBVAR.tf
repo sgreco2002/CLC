@@ -11,9 +11,9 @@ variable "VNETID" {  // *** to be retreived from clc gui
 	description = "Network configured to be catch using ctl API"
 	default = {
 		FE.VLANID = "77facca935e047b9985d1ae867829194"
-		BE.VLANID = ""
-		DATA.VLANID = ""
-		//add vlan id
+		BE.VLANID = "9087e7b43e7e400c894be278e81b9228"
+		DATA.VLANID = "af01ae5992fa455c9f188c6c4aaf6c1b"
+		//add vlan id -> done
 	}
 }
 
@@ -77,6 +77,24 @@ variable "VGLOBRESOURCE" {
 		Drm.RAM = 4096
 		Monitor.CPU = 2
 		Monitor.RAM = 4096
+		Fe.CPU = 2
+		Fe.RAM = 4
+		Femirror.CPU = 2
+		Femirror.RAM = 4
+		Be.CPU = 4
+		Be.RAM = 8
+		Batch.CPU = 2
+		Batch.RAM = 16
+		Pgw.CPU = 4
+		Pgw.RAM = 8
+		Pinboard.CPU = 2
+		Pinboard.RAM = 4
+		Sdp.CPU = 2
+		Sdp.RAM = 4
+		Search.CPU = 2
+		Search.RAM = 4
+		Mysql.CPU = 8
+		Mysql.RAM = 15
 		// add other machine resources
 	}
 }
@@ -101,6 +119,7 @@ variable "VTEMPLATES" {
 	description = "Temaplte names to be used"
 	default {
 		RH.BLANKOS.Template = "RHEL-6-64-TEMPLATE"
+		WIN.BLANKOS.Template = "WIN2012R2DTC-64"
 		// add windows blank template
 	}
 }
