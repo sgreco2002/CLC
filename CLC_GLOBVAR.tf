@@ -105,9 +105,16 @@ variable "VHOSTNAME" {
 	type = "map"
 	description = "Hostnames for Machine Role"
 	default = {
-		FE.CACHE = "PCACHE"
-		FE.DRM = "PDRMLI"
-		FE.MON = "PMONIT"
+		FE.CACHE = "PPCACH"
+		FE.DRM = "PPDRML"
+		FE.MON = "PPMONI"
+		BE.FE = "PPFE"
+		BE.PINB = "PPPINB"
+		BE.BE = "PPBE"
+		BE.BATC = "PPBATC"
+		BE.SDP = "PPSDP"
+		BE.SEAR = "PPSEAR"
+		DATA.MYSQL = "PPMYSQ"
 		// add other machine names
 	}
 }
