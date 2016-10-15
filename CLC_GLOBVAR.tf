@@ -113,8 +113,8 @@ variable "VHOSTNAME" {
 		BE.BE = "PPBE"
 		BE.BATC = "PPBATC"
 		BE.SDP = "PPSDP"
-		BE.SEAR = "PPSEAR"
-		DATA.MYSQL = "PPMYSQ"
+		BE.SEAR = "PPSRCH"
+		DATA.MYSQL = "PPMSQL"
 		// add other machine names
 	}
 }
