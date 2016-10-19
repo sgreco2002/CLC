@@ -13,6 +13,7 @@ variable "VNETID" {  // *** to be retreived from clc gui
 		FE.VLANID = "77facca935e047b9985d1ae867829194"
 		BE.VLANID = "9087e7b43e7e400c894be278e81b9228"
 		DATA.VLANID = "af01ae5992fa455c9f188c6c4aaf6c1b"
+		CMS.VLANID = "77065b522e114760bdaa16db450813c1"
 		//add vlan id -> done
 	}
 }
@@ -29,7 +30,7 @@ variable "VMAINGROUPS" {
 		Group0.Parent = "VA2 Hardware"
 		Group1.AVS.FoldName = "AVS Group"
 		Group1.CMS.FoldName = "CMS Group"
-		Group1.THA.FoldName = "THA Group"
+		Group1.THA.FoldName = "THA Group"		// *da inserire negli script a parte di THA
 		Group1.ALL.Parent = "PREPROD"
 		Group2.AVS.FE.DRM = "DRMLicenser"
 		Group2.AVS.FE.Cache = "WebPortalCache"
@@ -54,10 +55,12 @@ variable "VGLOBALVM" {
 	type = "map"
 	description = "Global setting for any VM"
 	default = {
-		VM.MinInstances = 2							// *** n of instance for each server
+		VM.MinInstances = 1							// *** n of instance for each server
+		VM.MaxInstances = 2
 		RH.Admin.name  = "root"
 		WIN.Admin.name = "administrator"
 		RH-WIN.Admin.Passwd = "Qj445MKBwb9f"		// *** root \ administrator passwd
+		CMS-WIN.Admin.Passwd = "_Accenture_1"		// ** administrator passwd CMS
 		RH.Disk.Path = "/product"
 		RH.Disk.SizeGb = 15
 		RH.Disk.Type = "partitioned"
@@ -95,6 +98,25 @@ variable "VGLOBRESOURCE" {
 		Search.RAM = 4
 		Mysql.CPU = 8
 		Mysql.RAM = 15
+		Addns.CPU = 2
+		Addns.RAM = 4
+		App.CPU = 4
+		App.RAM = 8
+		File.CPU = 2
+		File.RAM = 4
+		Ftp.CPU = 2
+		Ftp.RAM = 4
+		Lock.CPU = 4
+		Lock.RAM = 8
+		Msmq.CPU = 4
+		Msmq.RAM = 8
+		Proxy.CPU = 4
+		Proxy.RAM = 8
+		Sql.CPU = 4
+		Sql.RAM = 15
+		Web.CPU = 4
+		Web.RAM = 8
+
 		// add other machine resources
 	}
 }
@@ -115,6 +137,15 @@ variable "VHOSTNAME" {
 		BE.SDP = "PPSDP"
 		BE.SEAR = "PPSEAR"
 		DATA.MYSQL = "PPMYSQ"
+		CMS.ADDNS = "ADDNS"
+		CMS.APP = "APP"
+		CMS.FILE = "FILE"
+		CMS.FTP = "FTP"
+		CMS.LOCK = "LOCK"
+		CMS.MSMQ = "MSMQ"
+		CMS.PROXY = "PROXY"
+		CMS.SQL = "SQL"
+		CMS.WEB = "WEB"
 		// add other machine names
 	}
 }
