@@ -13,6 +13,7 @@ variable "VNETID" {  // *** to be retreived from clc gui
 		FE.VLANID = "77facca935e047b9985d1ae867829194"
 		BE.VLANID = "9087e7b43e7e400c894be278e81b9228"
 		DATA.VLANID = "af01ae5992fa455c9f188c6c4aaf6c1b"
+		CMS.VLANID = "77065b522e114760bdaa16db450813c1"
 		//add vlan id -> done
 	}
 }
@@ -29,7 +30,7 @@ variable "VMAINGROUPS" {
 		Group0.Parent = "VA2 Hardware"
 		Group1.AVS.FoldName = "AVS Group"
 		Group1.CMS.FoldName = "CMS Group"
-		Group1.THA.FoldName = "THA Group"
+		Group1.THA.FoldName = "THA Group"		// *da inserire negli script a parte di THA
 		Group1.ALL.Parent = "PREPROD"
 		Group2.AVS.FE.DRM = "DRMLicenser"
 		Group2.AVS.FE.Cache = "WebPortalCache"
@@ -54,10 +55,12 @@ variable "VGLOBALVM" {
 	type = "map"
 	description = "Global setting for any VM"
 	default = {
-		VM.MinInstances = 2							// *** n of instance for each server
+		VM.MinInstances = 1							// *** n of instance for each server
+		VM.MaxInstances = 2
 		RH.Admin.name  = "root"
 		WIN.Admin.name = "administrator"
 		RH-WIN.Admin.Passwd = "Qj445MKBwb9f"		// *** root \ administrator passwd
+		CMS-WIN.Admin.Passwd = "_Accenture_1"		// ** administrator passwd CMS
 		RH.Disk.Path = "/product"
 		RH.Disk.SizeGb = 15
 		RH.Disk.Type = "partitioned"
@@ -79,10 +82,12 @@ variable "VGLOBRESOURCE" {
 		Monitor.RAM = 4096
 		Fe.CPU = 2
 		Fe.RAM = 4096
+		Femirror.CPU = 2
+		Femirror.RAM = 4096
 		Be.CPU = 4
 		Be.RAM = 8192
 		Batch.CPU = 2
-		Batch.RAM = 16384
+		Batch.RAM = 16
 		Pgw.CPU = 4
 		Pgw.RAM = 8192
 		Pinboard.CPU = 2
@@ -92,7 +97,26 @@ variable "VGLOBRESOURCE" {
 		Search.CPU = 2
 		Search.RAM = 4096
 		Mysql.CPU = 8
-		Mysql.RAM = 15360
+		Mysql.RAM = 15
+		Addns.CPU = 2
+		Addns.RAM = 4096
+		App.CPU = 4
+		App.RAM = 8192
+		File.CPU = 2
+		File.RAM = 4096
+		Ftp.CPU = 2
+		Ftp.RAM = 4096
+		Lock.CPU = 4
+		Lock.RAM = 8192
+		Msmq.CPU = 4
+		Msmq.RAM = 8192
+		Proxy.CPU = 4
+		Proxy.RAM = 8192
+		Sql.CPU = 4
+		Sql.RAM = 15360
+		Web.CPU = 4
+		Web.RAM = 8192
+
 		// add other machine resources
 	}
 }
@@ -111,9 +135,17 @@ variable "VHOSTNAME" {
 		BE.BE = "PPBE"
 		BE.BATC = "PPBATC"
 		BE.SDP = "PPSDP"
-		BE.SEAR = "PPSRCH"
-		BE.PGW = "PPPGW"
-		DATA.MYSQL = "PPMSQL"
+		BE.SEAR = "PPSEAR"
+		DATA.MYSQL = "PPMYSQ"
+		CMS.ADDNS = "ADDNS"
+		CMS.APP = "APP"
+		CMS.FILE = "FILE"
+		CMS.FTP = "FTP"
+		CMS.LOCK = "LOCK"
+		CMS.MSMQ = "MSMQ"
+		CMS.PROXY = "PROXY"
+		CMS.SQL = "SQL"
+		CMS.WEB = "WEB"
 		// add other machine names
 	}
 }
