@@ -78,23 +78,21 @@ variable "VGLOBRESOURCE" {
 		Monitor.CPU = 2
 		Monitor.RAM = 4096
 		Fe.CPU = 2
-		Fe.RAM = 4
-		Femirror.CPU = 2
-		Femirror.RAM = 4
+		Fe.RAM = 4096
 		Be.CPU = 4
-		Be.RAM = 8
+		Be.RAM = 8192
 		Batch.CPU = 2
-		Batch.RAM = 16
+		Batch.RAM = 16384
 		Pgw.CPU = 4
-		Pgw.RAM = 8
+		Pgw.RAM = 8192
 		Pinboard.CPU = 2
-		Pinboard.RAM = 4
+		Pinboard.RAM = 4096
 		Sdp.CPU = 2
-		Sdp.RAM = 4
+		Sdp.RAM = 4096
 		Search.CPU = 2
-		Search.RAM = 4
+		Search.RAM = 4096
 		Mysql.CPU = 8
-		Mysql.RAM = 15
+		Mysql.RAM = 15360
 		// add other machine resources
 	}
 }
@@ -114,6 +112,7 @@ variable "VHOSTNAME" {
 		BE.BATC = "PPBATC"
 		BE.SDP = "PPSDP"
 		BE.SEAR = "PPSRCH"
+		BE.PGW = "PPPGW"
 		DATA.MYSQL = "PPMSQL"
 		// add other machine names
 	}
