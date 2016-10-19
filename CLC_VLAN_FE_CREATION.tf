@@ -12,54 +12,48 @@ resource "clc_group" "RGROUPFEDRM" {
   name = "${var.VMAINGROUPS.["Group2.AVS.FE.DRM"]}"
   parent = "${var.VMAINGROUPS.["Group2.AVS.Parent"]}"
 }
+
+resource "clc_group" "RGROUPFEMON" {
+  location_id = "${var.VMAINGROUPS.["Group0.LocationID"]}"
+  name = "${var.VMAINGROUPS.["Group2.AVS.FE.Monitor"]}"
+  parent = "${var.VMAINGROUPS.["Group2.AVS.Parent"]}"
+}
 # -----------------------------------------------------------------
 
 # Create FRONTEND VM
 # -----------------------------------------------------------------
 resource "clc_server" "RCACHENODE" {                                //variabile nome macchina es FE -> sul cloud diventa FE01 / 02 etc
-  count = "${var.VGLOBALVM.["VM.MinInstances"]}"
+  count = "${var.VGLOBALVM.["VM.MaxInstances"]}"
   name_template = "${var.VHOSTNAME.["FE.CACHE"]}"
-  source_server_id = "RHEL-6-64-TEMPLATE"                           //nome template da deployare
+  source_server_id = "${var.VTEMPLATES.["RH.BLANKOS.Template"]}"
   group_id = "${clc_group.RGROUPFECACHE.id}"                        //variabile nome folder dove posizionare la macchina
   cpu = "${var.VGLOBRESOURCE.["Cache.CPU"]}"                        //variabile CPU CACHE VM
   memory_mb = "${var.VGLOBRESOURCE.["Cache.RAM"]}"                  //variabile RAM CACHE VM
   password = "${var.VGLOBALVM.["RH-WIN.Admin.Passwd"]}"             //variabile password AVS VM
-  network_id = "77facca935e047b9985d1ae867829194"	                //variabile NETWORK FE VA2 Pre-Prod
-  additional_disks = {
-      path = "${var.VGLOBALVM.["RH.Disk.Path"]}"
-      size_gb = "${var.VGLOBALVM.["RH.Disk.SizeGb"]}"
-      type = "${var.VGLOBALVM.["RH.Disk.Type"]}"
-  }
+  network_id = "${var.VNETID.["FE.VLANID"]}"	                //variabile NETWORK FE VA2 Pre-Prod
 }
 
 # Create DRM VM
 resource "clc_server" "RDRMNODE" {                                //variabile nome macchina es FE -> sul cloud diventa FE01 / 02 etc
-  count = "${var.VGLOBALVM.["VM.MinInstances"]}"
+  count = "${var.VGLOBALVM.["VM.MaxInstances"]}"
   name_template = "${var.VHOSTNAME.["FE.DRM"]}"
   source_server_id = "RHEL-6-64-TEMPLATE"                           //nome template da deployare
   group_id = "${clc_group.RGROUPFEDRM.id}"                        //variabile nome folder dove posizionare la macchina
   cpu = "${var.VGLOBRESOURCE.["Drm.CPU"]}"                        //variabile CPU CACHE VM
   memory_mb = "${var.VGLOBRESOURCE.["Drm.RAM"]}"                  //variabile RAM CACHE VM
   password = "${var.VGLOBALVM.["RH-WIN.Admin.Passwd"]}"             //variabile password AVS VM
-  network_id = "${var.VNETID.["BE.VLANID"]}"	                //variabile NETWORK FE VA2 Pre-Prod
-  additional_disks = {
-    path = "${var.VGLOBALVM.["RH.Disk.Path"]}"
-    size_gb = "${var.VGLOBALVM.["RH.Disk.SizeGb"]}"
-    type = "${var.VGLOBALVM.["RH.Disk.Type"]}"
-  }
+  network_id = "${var.VNETID.["FE.VLANID"]}"	                //variabile NETWORK FE VA2 Pre-Prod
+}
+
+# Create Monitoring VM
+resource "clc_server" "RMONNODE" {                                //variabile nome macchina es FE -> sul cloud diventa FE01 / 02 etc
+  count = "${var.VGLOBALVM.["VM.MaxInstances"]}"
+  name_template = "${var.VHOSTNAME.["FE.MON"]}"
+  source_server_id = "${var.VTEMPLATES.["WIN.BLANKOS.Template"]}"                        //nome template da deployare
+  group_id = "${clc_group.RGROUPFEMON.id}"                        //variabile nome folder dove posizionare la macchina
+  cpu = "${var.VGLOBRESOURCE.["Monitor.CPU"]}"                        //variabile CPU CACHE VM
+  memory_mb = "${var.VGLOBRESOURCE.["Monitor.RAM"]}"                  //variabile RAM CACHE VM
+  password = "${var.VGLOBALVM.["RH-WIN.Admin.Passwd"]}"             //variabile password AVS VM
+  network_id = "${var.VNETID.["FE.VLANID"]}"	                //variabile NETWORK FE VA2 Pre-Prod
 }
 # -----------------------------------------------------------------
-/*
-
-  resource "clc_server" "RMONODE" {                      //variabile nome macchina es FE -> sul cloud diventa FE01 / 02 etc
-     name_template = "Moni02"                             //variabile nometemplare per richiamare questo "script"
-     source_server_id = "RHEL-6-64-TEMPLATE"            //nome template da deployare
-     group_id = "${clc_group.FEPROD.id}"                //variabile nome folder dove posizionare la macchina
-     cpu = 2                                            //variabile CPU MONIT VM
-     memory_mb = 4096                                   //variabile RAM MONIT VM
-     password = "Qj445MKBwb9f"                          //variabile password AVS VM
-     network_id = "77facca935e047b9985d1ae867829194"	//variabile NETWORK FE VA2 Pre-Prod
-     private_ip_address = "10.166.132.18"				//possiamo fare anche qui una variabile contando che ogni nuova VLAN parte del x.x.x.12 / x.x.x.13 etc
-   }
-
-*/
