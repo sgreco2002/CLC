@@ -13,10 +13,3 @@ resource "clc_group" "GROUP1AVS" {
   name = "${var.VMAINGROUPS.["Group1.AVS.FoldName"]}"
   parent = "${var.VMAINGROUPS.["Group1.ALL.Parent"]}"
 }
-
-# Create APP Folder (lvl 1 - CMS)
-resource "clc_group" "GROUP1CMS" {
-  location_id = "${var.VMAINGROUPS.["Group0.LocationID"]}"
-  name = "${var.VMAINGROUPS.["Group1.CMS.FoldName"]}"
-  parent = "${var.VMAINGROUPS.["Group1.ALL.Parent"]}"
-}
