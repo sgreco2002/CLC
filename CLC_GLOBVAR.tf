@@ -3,7 +3,7 @@
 # comment dario2
 provider "clc" {
 	username = "sergio.greco.pp"					// *** clc account
-	password = "Raffaello00"						// *** clc password
+	password = "CLEARED"						// *** clc password
 }
 # NETWORKS ---------------------------------------------------------------------------
 variable "VNETID" {  // *** to be retreived from clc gui
