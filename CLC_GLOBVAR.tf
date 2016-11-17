@@ -59,7 +59,7 @@ variable "VGLOBALVM" {
 		VM.MaxInstances = 2
 		RH.Admin.name  = "root"
 		WIN.Admin.name = "administrator"
-		RH-WIN.Admin.Passwd = "Qj445MKBwb9f"		// *** root \ administrator passwd
+		RH-WIN.Admin.Passwd = "CLEARED"		// *** root \ administrator passwd
 		CMS-WIN.Admin.Passwd = "_Accenture_1"		// ** administrator passwd CMS
 		RH.Disk.Path = "/product"
 		RH.Disk.SizeGb = 15
