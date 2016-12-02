@@ -42,6 +42,7 @@ variable "VMAINGROUPS" {
 		Group2.AVS.BE.SOL = "Search"
 		Group2.AVS.BE.BackEnds = "WebPortalBackEnd"
 		Group2.AVS.BE.Pinboard = "PinBoard"
+		Group2.AVS.BE.FE = "FrontEnd"
 		Group2.AVS.BE.SDP = "SDP"
 		Group2.AVS.DATA.MySql = "BEDatabase"
 		Group2.AVS.Parent = "AVS Group"
@@ -59,7 +60,7 @@ variable "VGLOBALVM" {
 		VM.MaxInstances = 2
 		RH.Admin.name  = "root"
 		WIN.Admin.name = "administrator"
-		RH-WIN.Admin.Passwd = "CLEARED"		// *** root \ administrator passwd
+		RH-WIN.Admin.Passwd = "Qj445MKBwb9f"		// *** root \ administrator passwd
 		CMS-WIN.Admin.Passwd = "_Accenture_1"		// ** administrator passwd CMS
 		RH.Disk.Path = "/product"
 		RH.Disk.SizeGb = 15
@@ -86,6 +87,8 @@ variable "VGLOBRESOURCE" {
 		Femirror.RAM = 4096
 		Be.CPU = 4
 		Be.RAM = 8192
+		Ntp.CPU = 1
+		Ntp.RAM = 1
 		Batch.CPU = 2
 		Batch.RAM = 16
 		Pgw.CPU = 4
@@ -94,6 +97,8 @@ variable "VGLOBRESOURCE" {
 		Pinboard.RAM = 4096
 		Sdp.CPU = 2
 		Sdp.RAM = 4096
+		Pgw.CPU = 2
+		Pgw.RAM = 4096
 		Search.CPU = 2
 		Search.RAM = 4096
 		Mysql.CPU = 8
@@ -136,6 +141,8 @@ variable "VHOSTNAME" {
 		BE.BATC = "PPBATC"
 		BE.SDP = "PPSDP"
 		BE.SEAR = "PPSEAR"
+		BE.NTP = "PPNTP"
+		BE.PGW = "PPGW"
 		DATA.MYSQL = "PPMYSQ"
 		CMS.ADDNS = "ADDNS"
 		CMS.APP = "APP"
