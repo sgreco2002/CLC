@@ -11,7 +11,11 @@ resource "clc_group" "RGROUPDATADB" {
 
 # Create BATCH VM
 # -----------------------------------------------------------------
+<<<<<<< HEAD
 resource "clc_server" "RMYSQLNODE" {                                //variabile nome macchina es FE -> sul cloud diventa FE01 / 02 etc
+=======
+resource "clc_server" "RBATCHNODE" {                                //variabile nome macchina es FE -> sul cloud diventa FE01 / 02 etc
+>>>>>>> origin/R1.0
   count = "${var.VGLOBALVM.["VM.MaxInstances"]}"
   name_template = "${var.VHOSTNAME.["DATA.MYSQL"]}"
   source_server_id = "VA2OTT1CMYSQL01"
