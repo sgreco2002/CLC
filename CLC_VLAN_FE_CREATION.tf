@@ -33,6 +33,7 @@ resource "clc_server" "RCACHENODE" {                                //variabile 
   network_id = "${var.VNETID.["FE.VLANID"]}"	                //variabile NETWORK FE VA2 Pre-Prod
 }
 
+
 # Create DRM VM
 resource "clc_server" "RDRMNODE" {                                //variabile nome macchina es FE -> sul cloud diventa FE01 / 02 etc
   count = "${var.VGLOBALVM.["VM.MaxInstances"]}"
