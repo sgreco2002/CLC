@@ -2,8 +2,8 @@
 #new comment ciao
 # comment dario2
 provider "clc" {
-	username = "sergio.greco.pp"					// *** clc account
-	password = "CLEARED"						// *** clc password
+	username = "dario.segatori.pp"					// *** clc account
+	password = "Akitiple1988"						// *** clc password
 }
 # NETWORKS ---------------------------------------------------------------------------
 variable "VNETID" {  // *** to be retreived from clc gui
@@ -90,7 +90,7 @@ variable "VGLOBRESOURCE" {
 		Ntp.CPU = 1
 		Ntp.RAM = 1
 		Batch.CPU = 2
-		Batch.RAM = 16
+		Batch.RAM = 4096
 		Pgw.CPU = 4
 		Pgw.RAM = 8192
 		Pinboard.CPU = 2
@@ -117,7 +117,7 @@ variable "VGLOBRESOURCE" {
 		Msmq.RAM = 8192
 		Proxy.CPU = 4
 		Proxy.RAM = 8192
-		Sql.CPU = 4
+		Sql.CPU = 8
 		Sql.RAM = 15360
 		Web.CPU = 4
 		Web.RAM = 8192
