@@ -12,8 +12,8 @@ variable "VNETID" {  // *** to be retreived from clc gui
 	type = "map"
 	description = "Network configured to be catch using ctl API"
 	default = {
-		THA.BE.VLANID = "xx"
-		THA.FE.VLANID = "xx"
+		THA.BE.VLANID = "eb61de85ac794f1487cf151c90b84c09"
+		THA.DATA.VLANID = "00b5d17a6bd04f41a3ee3e898d2c0957"
 		//add vlan id ->
 	}
 }
@@ -41,7 +41,7 @@ variable "VGLOBALVM" {
 	type = "map"
 	description = "Global setting for any VM"
 	default = {
-		VM.MinInstances = 1							// *** n of instance for each server
+		VM.MinInstances = 2							// *** n of instance for each server
 		VM.MaxInstances = 3
 		RH.Admin.name  = "root"
 		WIN.Admin.name = "administrator"

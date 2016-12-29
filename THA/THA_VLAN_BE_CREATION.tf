@@ -1,79 +1,29 @@
 // "${}"
-#Create BE Groups
+
+# Create CRE APP VM
 # -----------------------------------------------------------------
-/*resource "clc_group" "RGROUPBEBATCH" {
-  location_id = "${var.VMAINGROUPS.["Group0.LocationID"]}"
-  name = "${var.VMAINGROUPS.["Group2.AVS.BE.Batch"]}"
-  parent = "${var.VMAINGROUPS.["Group2.AVS.Parent"]}"
-}
-
-resource "clc_group" "RGROUPBENTP" {
-  location_id = "${var.VMAINGROUPS.["Group0.LocationID"]}"
-  name = "${var.VMAINGROUPS.["Group2.AVS.BE.NTP"]}"
-  parent = "${var.VMAINGROUPS.["Group2.AVS.Parent"]}"
-}
-
-resource "clc_group" "RGROUPBEPGW" {
-  location_id = "${var.VMAINGROUPS.["Group0.LocationID"]}"
-  name = "${var.VMAINGROUPS.["Group2.AVS.BE.PGW"]}"
-  parent = "${var.VMAINGROUPS.["Group2.AVS.Parent"]}"
-}
-
-resource "clc_group" "RGROUPBEPINBOARD" {
-  location_id = "${var.VMAINGROUPS.["Group0.LocationID"]}"
-  name = "${var.VMAINGROUPS.["Group2.AVS.BE.Pinboard"]}"
-  parent = "${var.VMAINGROUPS.["Group2.AVS.Parent"]}"
-}
-
-resource "clc_group" "RGROUPBESDP" {
-  location_id = "${var.VMAINGROUPS.["Group0.LocationID"]}"
-  name = "${var.VMAINGROUPS.["Group2.AVS.BE.SDP"]}"
-  parent = "${var.VMAINGROUPS.["Group2.AVS.Parent"]}"
-}
-
-resource "clc_group" "RGROUPBESEARCH" {
-  location_id = "${var.VMAINGROUPS.["Group0.LocationID"]}"
-  name = "${var.VMAINGROUPS.["Group2.AVS.BE.SOL"]}"
-  parent = "${var.VMAINGROUPS.["Group2.AVS.Parent"]}"
-}
-
-resource "clc_group" "RGROUPBEBACKEND" {
-  location_id = "${var.VMAINGROUPS.["Group0.LocationID"]}"
-  name = "${var.VMAINGROUPS.["Group2.AVS.BE.BackEnds"]}"
-  parent = "${var.VMAINGROUPS.["Group2.AVS.Parent"]}"
-}
-
-resource "clc_group" "RGROUPFEFRONTEND" {
-  location_id = "${var.VMAINGROUPS.["Group0.LocationID"]}"
-  name = "${var.VMAINGROUPS.["Group2.AVS.BE.FE"]}"
-  parent = "${var.VMAINGROUPS.["Group2.AVS.Parent"]}"
-}
-# -----------------------------------------------------------------
-
-# Create BATCH VM
-# -----------------------------------------------------------------
-resource "clc_server" "RBATCHNODE" {                                //variabile nome macchina es FE -> sul cloud diventa FE01 / 02 etc
+resource "clc_server" "RCREAPP" {                                //variabile nome macchina es FE -> sul cloud diventa FE01 / 02 etc
   count = "${var.VGLOBALVM.["VM.MaxInstances"]}"
-  name_template = "${var.VHOSTNAME.["BE.BATC"]}"
-  source_server_id = "VA2OTT2CBATCH04"
-  group_id = "${clc_group.RGROUPBEBATCH.id}"                        //variabile nome folder dove posizionare la macchina
-  cpu = "${var.VGLOBRESOURCE.["Batch.CPU"]}"                        //variabile CPU CACHE VM
-  memory_mb = "${var.VGLOBRESOURCE.["Batch.RAM"]}"                  //variabile RAM CACHE VM
+  name_template = "${var.VHOSTNAME.["THA.CRE"]}"
+  source_server_id = "XX"
+  group_id = "${clc_group.GROUP1THAAPP.id}"                        //variabile nome folder dove posizionare la macchina
+  cpu = "${var.VGLOBRESOURCE.["APPS.CPU"]}"                        //variabile CPU CACHE VM
+  memory_mb = "${var.VGLOBRESOURCE.["APPS.RAM"]}"                  //variabile RAM CACHE VM
   password = "${var.VGLOBALVM.["RH-WIN.Admin.Passwd"]}"             //variabile password AVS VM
-  network_id = "${var.VNETID.["BE.VLANID"]}"	                //variabile NETWORK FE VA2 Pre-Prod
+  network_id = "${var.VNETID.["THA.BE.VLANID"]}"	                //variabile NETWORK FE VA2 Pre-Prod
 }
 
-# Create PaymentGateway VM
-resource "clc_server" "RPGWNODE" {                                //variabile nome macchina es FE -> sul cloud diventa FE01 / 02 etc
-  count = "${var.VGLOBALVM.["VM.MaxInstances"]}"
-  name_template = "${var.VHOSTNAME.["BE.PGW"]}"
-  source_server_id = "VA2OTT2CPGW02"                        //nome template da deployare
-  group_id = "${clc_group.RGROUPBEPGW.id}"                        //variabile nome folder dove posizionare la macchina
-  cpu = "${var.VGLOBRESOURCE.["Pgw.CPU"]}"                        //variabile CPU CACHE VM
-  memory_mb = "${var.VGLOBRESOURCE.["Pgw.RAM"]}"                  //variabile RAM CACHE VM
+resource "clc_server" "RCRERPS" {                                //variabile nome macchina es FE -> sul cloud diventa FE01 / 02 etc
+  //count = "${var.VGLOBALVM.["VM.MinInstances"]}"
+  name_template = "${var.VHOSTNAME.["THA.RPS"]}"
+  source_server_id = "XX"
+  group_id = "${clc_group.GROUP1THAAPP.id}"                        //variabile nome folder dove posizionare la macchina
+  cpu = "${var.VGLOBRESOURCE.["APPS.CPU"]}"                        //variabile CPU CACHE VM
+  memory_mb = "${var.VGLOBRESOURCE.["APPS.RAM"]}"                  //variabile RAM CACHE VM
   password = "${var.VGLOBALVM.["RH-WIN.Admin.Passwd"]}"             //variabile password AVS VM
-  network_id = "${var.VNETID.["BE.VLANID"]}"	                //variabile NETWORK FE VA2 Pre-Prod
+  network_id = "${var.VNETID.["THA.BE.VLANID"]}"	                //variabile NETWORK FE VA2 Pre-Prod
 }
+
 /*
 # Create NTP VM
 resource "clc_server" "RNTPNODE" {                                //variabile nome macchina es FE -> sul cloud diventa FE01 / 02 etc
