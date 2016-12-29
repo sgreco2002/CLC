@@ -1,7 +1,7 @@
 // "${}"
 #Create DATA Groups
 # -----------------------------------------------------------------
-resource "clc_group" "RGROUPDATADB" {
+/*resource "clc_group" "RGROUPDATADB" {
   location_id = "${var.VMAINGROUPS.["Group0.LocationID"]}"
   name = "${var.VMAINGROUPS.["Group2.AVS.DATA.MySql"]}"
   parent = "${var.VMAINGROUPS.["Group2.AVS.Parent"]}"
@@ -22,4 +22,5 @@ resource "clc_server" "RMYSQLNODE" {                                //variabile 
   password = "${var.VGLOBALVM.["RH-WIN.Admin.Passwd"]}"             //variabile password AVS VM
   network_id = "${var.VNETID.["DATA.VLANID"]}"	                //variabile NETWORK FE VA2 Pre-Prod
 }
+*/
 # -----------------------------------------------------------------

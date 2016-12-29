@@ -1,7 +1,7 @@
 // "${}"
 #Create BE Groups
 # -----------------------------------------------------------------
-resource "clc_group" "RGROUPBEBATCH" {
+/*resource "clc_group" "RGROUPBEBATCH" {
   location_id = "${var.VMAINGROUPS.["Group0.LocationID"]}"
   name = "${var.VMAINGROUPS.["Group2.AVS.BE.Batch"]}"
   parent = "${var.VMAINGROUPS.["Group2.AVS.Parent"]}"
@@ -86,7 +86,7 @@ resource "clc_server" "RNTPNODE" {                                //variabile no
   password = "${var.VGLOBALVM.["RH-WIN.Admin.Passwd"]}"             //variabile password AVS VM
   network_id = "${var.VNETID.["BE.VLANID"]}"	                //variabile NETWORK FE VA2 Pre-Prod
 }
-*/
+
 # Create Pinboard VM
 resource "clc_server" "RPINBOARDNODE" {                                //variabile nome macchina es FE -> sul cloud diventa FE01 / 02 etc
   count = "${var.VGLOBALVM.["VM.MaxInstances"]}"
@@ -146,4 +146,5 @@ resource "clc_server" "RFENODE" {                                //variabile nom
   password = "${var.VGLOBALVM.["RH-WIN.Admin.Passwd"]}"             //variabile password AVS VM
   network_id = "${var.VNETID.["BE.VLANID"]}"	                //variabile NETWORK FE VA2 Pre-Prod
 }
+*/
 # -----------------------------------------------------------------

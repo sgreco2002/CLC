@@ -8,8 +8,15 @@ resource "clc_group" "GROUP0" {
 }
 
 # Create APP Folder (lvl 1 - AVS)
-resource "clc_group" "GROUP1AVS" {
+resource "clc_group" "GROUP1THAAPP" {
   location_id = "${var.VMAINGROUPS.["Group0.LocationID"]}"
-  name = "${var.VMAINGROUPS.["Group1.AVS.FoldName"]}"
+  name = "${var.VMAINGROUPS.["Group1.THA.FoldNameAPP"]}"
+  parent = "${var.VMAINGROUPS.["Group1.ALL.Parent"]}"
+}
+
+# Create APP Folder (lvl 1 - AVS)
+resource "clc_group" "GROUP1THADATA" {
+  location_id = "${var.VMAINGROUPS.["Group0.LocationID"]}"
+  name = "${var.VMAINGROUPS.["Group1.THA.FoldNameDATA"]}"
   parent = "${var.VMAINGROUPS.["Group1.ALL.Parent"]}"
 }
