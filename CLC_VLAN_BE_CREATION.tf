@@ -63,18 +63,6 @@ resource "clc_server" "RBATCHNODE" {                                //variabile 
   network_id = "${var.VNETID.["BE.VLANID"]}"	                //variabile NETWORK FE VA2 Pre-Prod
 }
 
-# Create NTP VM
-resource "clc_server" "RNTPNODE" {                                //variabile nome macchina es FE -> sul cloud diventa FE01 / 02 etc
-  count = "${var.VGLOBALVM.["VM.MinInstances"]}"
-  name_template = "${var.VHOSTNAME.["BE.NTP"]}"
-  source_server_id = "VA2OTT2CNTP01"                           //nome template da deployare
-  group_id = "${clc_group.RGROUPBENTP.id}"                        //variabile nome folder dove posizionare la macchina
-  cpu = "${var.VGLOBRESOURCE.["Ntp.CPU"]}"                        //variabile CPU CACHE VM
-  memory_mb = "${var.VGLOBRESOURCE.["Ntp.RAM"]}"                  //variabile RAM CACHE VM
-  password = "${var.VGLOBALVM.["RH-WIN.Admin.Passwd"]}"             //variabile password AVS VM
-  network_id = "${var.VNETID.["BE.VLANID"]}"	                //variabile NETWORK FE VA2 Pre-Prod
-}
-
 # Create PaymentGateway VM
 resource "clc_server" "RPGWNODE" {                                //variabile nome macchina es FE -> sul cloud diventa FE01 / 02 etc
   count = "${var.VGLOBALVM.["VM.MaxInstances"]}"
@@ -86,7 +74,19 @@ resource "clc_server" "RPGWNODE" {                                //variabile no
   password = "${var.VGLOBALVM.["RH-WIN.Admin.Passwd"]}"             //variabile password AVS VM
   network_id = "${var.VNETID.["BE.VLANID"]}"	                //variabile NETWORK FE VA2 Pre-Prod
 }
-
+/*
+# Create NTP VM
+resource "clc_server" "RNTPNODE" {                                //variabile nome macchina es FE -> sul cloud diventa FE01 / 02 etc
+  count = "${var.VGLOBALVM.["VM.MinInstances"]}"
+  name_template = "${var.VHOSTNAME.["BE.NTP"]}"
+  source_server_id = "${var.VTEMPLATES.["RH.BLANKOS.Template"]}"                       //nome template da deployare
+  group_id = "${clc_group.RGROUPBENTP.id}"                        //variabile nome folder dove posizionare la macchina
+  cpu = "${var.VGLOBRESOURCE.["Ntp.CPU"]}"                        //variabile CPU CACHE VM
+  memory_mb = "${var.VGLOBRESOURCE.["Ntp.RAM"]}"                  //variabile RAM CACHE VM
+  password = "${var.VGLOBALVM.["RH-WIN.Admin.Passwd"]}"             //variabile password AVS VM
+  network_id = "${var.VNETID.["BE.VLANID"]}"	                //variabile NETWORK FE VA2 Pre-Prod
+}
+*/
 # Create Pinboard VM
 resource "clc_server" "RPINBOARDNODE" {                                //variabile nome macchina es FE -> sul cloud diventa FE01 / 02 etc
   count = "${var.VGLOBALVM.["VM.MaxInstances"]}"

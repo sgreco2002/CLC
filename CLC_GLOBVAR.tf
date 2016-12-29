@@ -38,7 +38,7 @@ variable "VMAINGROUPS" {
 		Group2.AVS.BE.Analytics = "Analytics"
 		Group2.AVS.BE.Batch = "Batch"
 		Group2.AVS.BE.NTP = "NTPdate"
-		Group2.AVS.BE.PGW = "PayemntGateway"
+		Group2.AVS.BE.PGW = "PaymentGateway"
 		Group2.AVS.BE.SOL = "Search"
 		Group2.AVS.BE.BackEnds = "WebPortalBackEnd"
 		Group2.AVS.BE.Pinboard = "PinBoard"
@@ -121,6 +121,12 @@ variable "VGLOBRESOURCE" {
 		Sql.RAM = 15360
 		Web.CPU = 4
 		Web.RAM = 8192
+		Bas.CPU = 1
+		Bas.RAM = 1024
+		DS.CPU = 2
+		DS.RAM = 2048
+		IDX.CPU = 16
+		IDX.RAM = 19264
 
 		// add other machine resources
 	}
@@ -135,6 +141,9 @@ variable "VHOSTNAME" {
 		FE.CACHE = "PPCACH"
 		FE.DRM = "PPDRML"
 		FE.MON = "PPMONI"
+		FE.BAS = "PPBT"
+		FE.DS = "PPDS"
+		FE.IDX = "PPIDX"
 		BE.FE = "PPFE"
 		BE.PINB = "PPPINB"
 		BE.BE = "PPBE"
@@ -161,7 +170,7 @@ variable "VHOSTNAME" {
 
 variable "VTEMPLATES" {
 	type = "map"
-	description = "Temaplte names to be used"
+	description = "Template names to be used"
 	default {
 		RH.BLANKOS.Template = "RHEL-6-64-TEMPLATE"
 		WIN.BLANKOS.Template = "WIN2012R2DTC-64"
