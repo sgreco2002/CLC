@@ -14,7 +14,7 @@ variable "VNETID" {  // *** to be retreived from clc gui
 		BE.VLANID = "9087e7b43e7e400c894be278e81b9228"
 		DATA.VLANID = "af01ae5992fa455c9f188c6c4aaf6c1b"
 		CMS.VLANID = "77065b522e114760bdaa16db450813c1"
-		//add vlan id -> done
+		//add vlan id ->
 	}
 }
 
