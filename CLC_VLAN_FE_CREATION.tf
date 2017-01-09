@@ -46,7 +46,7 @@ resource "clc_server" "RMONNODE" {                                //variabile no
 resource "clc_server" "RMONNODE2" {                                //variabile nome macchina es FE -> sul cloud diventa FE01 / 02 etc
   count = "${var.VGLOBALVM.["VM.MinInstances"]}"
   name_template = "${var.VHOSTNAME.["FE.MON"]}"
-  source_server_id = "XXX"                        //nome template da deployare
+  source_server_id = "VA2OTT2CMONIT02"                        //nome template da deployare
   group_id = "${clc_group.RGROUPFEMON.id}"                        //variabile nome folder dove posizionare la macchina
   cpu = "${var.VGLOBRESOURCE.["Monitor.CPU"]}"                        //variabile CPU CACHE VM
   memory_mb = "${var.VGLOBRESOURCE.["Monitor.RAM"]}"                  //variabile RAM CACHE VM
@@ -58,7 +58,7 @@ resource "clc_server" "RMONNODE2" {                                //variabile n
 resource "clc_server" "RMONBAS" {                                //variabile nome macchina es FE -> sul cloud diventa FE01 / 02 etc
   count = "${var.VGLOBALVM.["VM.MinInstances"]}"
   name_template = "${var.VHOSTNAME.["FE.BAS"]}"
-  source_server_id = "XXX"                        //nome template da deployare
+  source_server_id = "${var.VTEMPLATES.["RH.BLANKOS.Template"] }"                     //nome template da deployare
   group_id = "${clc_group.RGROUPFEMON.id}"                        //variabile nome folder dove posizionare la macchina
   cpu = "${var.VGLOBRESOURCE.["Bas.CPU"]}"                        //variabile CPU CACHE VM
   memory_mb = "${var.VGLOBRESOURCE.["Bas.RAM"]}"                  //variabile RAM CACHE VM
@@ -71,7 +71,7 @@ resource "clc_server" "RMONBAS" {                                //variabile nom
 resource "clc_server" "RMONDS" {                                //variabile nome macchina es FE -> sul cloud diventa FE01 / 02 etc
   count = "${var.VGLOBALVM.["VM.MinInstances"]}"
   name_template = "${var.VHOSTNAME.["FE.DS"]}"
-  source_server_id = "XXX"                        //nome template da deployare
+  source_server_id = "VA2OTT2CDS0101"                        //nome template da deployare
   group_id = "${clc_group.RGROUPFEMON.id}"                        //variabile nome folder dove posizionare la macchina
   cpu = "${var.VGLOBRESOURCE.["DS.CPU"]}"                        //variabile CPU CACHE VM
   memory_mb = "${var.VGLOBRESOURCE.["DS.RAM"]}"                  //variabile RAM CACHE VM
@@ -84,7 +84,7 @@ resource "clc_server" "RMONDS" {                                //variabile nome
 resource "clc_server" "RMONIDX" {                                //variabile nome macchina es FE -> sul cloud diventa FE01 / 02 etc
   count = "${var.VGLOBALVM.["VM.MinInstances"]}"
   name_template = "${var.VHOSTNAME.["FE.IDX"]}"
-  source_server_id = "XXX"                        //nome template da deployare
+  source_server_id = "VA2OTT2CIDX0101"                        //nome template da deployare
   group_id = "${clc_group.RGROUPFEMON.id}"                        //variabile nome folder dove posizionare la macchina
   cpu = "${var.VGLOBRESOURCE.["IDX.CPU"]}"                        //variabile CPU CACHE VM
   memory_mb = "${var.VGLOBRESOURCE.["IDX.RAM"]}"                  //variabile RAM CACHE VM
